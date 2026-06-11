@@ -94,6 +94,12 @@
     .link-pdf:hover { background: #dceefa; }
     .link-web { color: var(--gray); margin-left: auto; }
     .link-web:hover { color: var(--blue); }
+    .card.coming { background: transparent; border-style: dashed; box-shadow: none; }
+    .card.coming:hover { transform: none; box-shadow: none; }
+    .card.coming:hover::before { opacity: 0; }
+    .card.coming h3 { color: var(--gray); }
+    .badge-coming { color: var(--gray); opacity: 0.8; }
+    .link-soon { font-size: 13px; font-weight: 700; color: #b6c2cc; padding: 8px 0; }
 
     footer {
       text-align: center; padding: 40px 7vw 56px; color: var(--gray); font-size: 13px;
@@ -119,7 +125,7 @@
     <div class="hero-stats">
       <div class="stat"><b>12</b><span>présentations</span></div>
       <div class="stat"><b>5</b><span>familles d'offres</span></div>
-      <div class="stat"><b>2</b><span>formats : web + PDF</span></div>
+      <div class="stat"><b>4</b><span>en préparation</span></div>
     </div>
   </header>
 
@@ -127,14 +133,14 @@
     <section class="family">
       <header class="family-head">
         <span class="numeral">I</span>
-        <h2>Prévention et Santé au Travail</h2>
+        <h2>Gestion des risques et santé au travail</h2>
         <span class="rule"></span>
       </header>
       <div class="grid">
         <article class="card" style="animation-delay: 70ms">
           
-          <h3>Externalisation des visites médicales</h3>
-          <p>Externalisation complète du suivi : convocations, relances SPST, traçabilité des avis.</p>
+          <h3>Gérer les visites médicales</h3>
+          <p>Planifier, relancer et tracer les visites médicales pour se décharger d&#x27;une tâche chronophage.</p>
           <div class="card-links">
             <a class="link-deck" href="https://ayming-france.github.io/visites-medicales/" target="_blank">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
@@ -149,8 +155,8 @@
         </article>
         <article class="card" style="animation-delay: 140ms">
           
-          <h3>Rattrapage des visites médicales en retard</h3>
-          <p>Projets de rattrapage structurés : diagnostic du retard, coordination SPST, preuves pour les inspections.</p>
+          <h3>Rattraper les visites médicales en retard</h3>
+          <p>Résorber le retard accumulé et régulariser votre situation rapidement.</p>
           <div class="card-links">
             <a class="link-deck" href="https://ayming-france.github.io/rattrapage-visites-medicales/" target="_blank">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
@@ -163,19 +169,30 @@
               ayming.fr</a>
           </div>
         </article>
+        <article class="card coming" style="animation-delay: 210ms">
+          <span class="badge badge-coming">À venir</span>
+          <h3>Évaluer les risques professionnels</h3>
+          <p>Faciliter la mise à jour du DUERP, piloter la priorisation des actions et suivre leur exécution.</p>
+          <div class="card-links">
+            <span class="link-soon">Présentation en préparation</span>
+            <a class="link-web" href="https://www.ayming.fr/ressources-humaines/prevention-et-sante-au-travail/evaluer-les-risques-professionnels-duerp/" target="_blank">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              ayming.fr</a>
+          </div>
+        </article>
       </div>
     </section>
     <section class="family">
       <header class="family-head">
         <span class="numeral">II</span>
-        <h2>Accidents du Travail / Maladies Professionnelles</h2>
+        <h2>Gestion des AT/MP</h2>
         <span class="rule"></span>
       </header>
       <div class="grid">
-        <article class="card" style="animation-delay: 210ms">
+        <article class="card" style="animation-delay: 280ms">
           
-          <h3>DAT Externalisation</h3>
-          <p>Déclarations dans le délai légal de 48h, projets de réserves motivées, analytics de sinistralité.</p>
+          <h3>Déclarer un accident du travail</h3>
+          <p>Constituer le dossier complet et déclarer dans les délais.</p>
           <div class="card-links">
             <a class="link-deck" href="https://ayming-france.github.io/declarer-un-accident-du-travail/" target="_blank">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
@@ -188,10 +205,10 @@
               ayming.fr</a>
           </div>
         </article>
-        <article class="card" style="animation-delay: 280ms">
+        <article class="card" style="animation-delay: 350ms">
           
-          <h3>Questionnaires de maladie professionnelle</h3>
-          <p>Réponses structurées aux questionnaires CPAM, sur la base des préconisations d&#x27;avocats indépendants.</p>
+          <h3>Traiter un questionnaire de maladie professionnelle</h3>
+          <p>Documenter la réponse et être proactif jusqu&#x27;à la décision finale de la CPAM.</p>
           <div class="card-links">
             <a class="link-deck" href="https://ayming-france.github.io/questionnaires-de-maladie-professionnelle/" target="_blank">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
@@ -204,16 +221,38 @@
               ayming.fr</a>
           </div>
         </article>
+        <article class="card coming" style="animation-delay: 420ms">
+          <span class="badge badge-coming">À venir</span>
+          <h3>Récupérer les coûts des accidents causés par un tiers responsable</h3>
+          <p>Identifier les coûts liés à un tiers responsable et faciliter leur récupération.</p>
+          <div class="card-links">
+            <span class="link-soon">Présentation en préparation</span>
+            <a class="link-web" href="https://www.ayming.fr/ressources-humaines/atmp/accidents-causes-par-un-tiers/" target="_blank">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              ayming.fr</a>
+          </div>
+        </article>
+        <article class="card coming" style="animation-delay: 490ms">
+          <span class="badge badge-coming">À venir</span>
+          <h3>Maîtriser les cotisations AT/MP</h3>
+          <p>Manager et piloter vos AT/MP.</p>
+          <div class="card-links">
+            <span class="link-soon">Présentation en préparation</span>
+            <a class="link-web" href="https://www.ayming.fr/ressources-humaines/couts-rh/cotisations-at-mp/" target="_blank">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              ayming.fr</a>
+          </div>
+        </article>
       </div>
     </section>
     <section class="family">
       <header class="family-head">
         <span class="numeral">III</span>
-        <h2>Arrêts de Travail</h2>
+        <h2>Gestion des arrêts de travail</h2>
         <span class="rule"></span>
       </header>
       <div class="grid">
-        <article class="card" style="animation-delay: 350ms">
+        <article class="card" style="animation-delay: 560ms">
           <span class="badge">Famille</span>
           <h3>Maîtrise des IJSS</h3>
           <p>Trois offres, un seul parcours : de la collecte des arrêts au suivi pérenne des remboursements.</p>
@@ -229,10 +268,10 @@
               ayming.fr</a>
           </div>
         </article>
-        <article class="card" style="animation-delay: 420ms">
+        <article class="card" style="animation-delay: 630ms">
           
-          <h3>Collecte et traitement des arrêts</h3>
-          <p>Réception centralisée des arrêts, contrôle de complétude, données prêtes pour la paie.</p>
+          <h3>Collecter et traiter les arrêts de travail</h3>
+          <p>Centraliser les justificatifs, contrôler la complétude, simplifier la saisie.</p>
           <div class="card-links">
             <a class="link-deck" href="https://ayming-france.github.io/collecte-et-traitement-des-arrets/" target="_blank">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
@@ -245,10 +284,21 @@
               ayming.fr</a>
           </div>
         </article>
-        <article class="card" style="animation-delay: 490ms">
+        <article class="card coming" style="animation-delay: 700ms">
+          <span class="badge badge-coming">À venir</span>
+          <h3>Suivre les remboursements IJSS et prévoyance</h3>
+          <p>Sécuriser les déclarations DSN, CPAM, assureurs et piloter les remboursements.</p>
+          <div class="card-links">
+            <span class="link-soon">Présentation en préparation</span>
+            <a class="link-web" href="https://www.ayming.fr/ressources-humaines/arrets-de-travail/remboursements-ijss-et-prevoyance/" target="_blank">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              ayming.fr</a>
+          </div>
+        </article>
+        <article class="card" style="animation-delay: 770ms">
           
-          <h3>Récupérer les IJ</h3>
-          <p>Identification et récupération des IJSS perdues des années antérieures, impact trésorerie immédiat.</p>
+          <h3>Récupérer les IJ non perçues</h3>
+          <p>Identifier les montants non perçus et faciliter les démarches de récupération.</p>
           <div class="card-links">
             <a class="link-deck" href="https://ayming-france.github.io/recuperer-ij/" target="_blank">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
@@ -261,10 +311,10 @@
               ayming.fr</a>
           </div>
         </article>
-        <article class="card" style="animation-delay: 560ms">
+        <article class="card" style="animation-delay: 840ms">
           
-          <h3>Pilotage des arrêts longue durée</h3>
-          <p>Visibilité et pilotage des arrêts longs : détection, suivi, démarches de retour à l&#x27;emploi.</p>
+          <h3>Piloter les arrêts longue durée</h3>
+          <p>Détecter les arrêts AT supérieurs à 45 jours et suivre leur évolution pour maîtriser les coûts.</p>
           <div class="card-links">
             <a class="link-deck" href="https://ayming-france.github.io/pilotage-arrets-longue-duree/" target="_blank">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
@@ -282,14 +332,14 @@
     <section class="family">
       <header class="family-head">
         <span class="numeral">IV</span>
-        <h2>Coûts RH</h2>
+        <h2>Gestion des coûts RH</h2>
         <span class="rule"></span>
       </header>
       <div class="grid">
-        <article class="card" style="animation-delay: 630ms">
+        <article class="card" style="animation-delay: 910ms">
           
           <h3>Optimisation des charges sociales</h3>
-          <p>Diagnostic des cotisations versées et présentation des pistes d&#x27;économies, environ 2% de la masse salariale.</p>
+          <p>Étude des bases et des exonérations, réduire les charges patronales.</p>
           <div class="card-links">
             <a class="link-deck" href="https://ayming-france.github.io/maitrise-des-charges-sociales/" target="_blank">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
@@ -302,10 +352,10 @@
               ayming.fr</a>
           </div>
         </article>
-        <article class="card" style="animation-delay: 700ms">
+        <article class="card" style="animation-delay: 980ms">
           
-          <h3>Accompagnement contrôle URSSAF</h3>
-          <p>Préparation en amont, accompagnement pendant le contrôle, démarches après la lettre d&#x27;observations.</p>
+          <h3>Accompagner un contrôle URSSAF</h3>
+          <p>Préparation en amont, appui technique et financier pendant le contrôle, étude pour limiter l&#x27;impact financier.</p>
           <div class="card-links">
             <a class="link-deck" href="https://ayming-france.github.io/accompagnement-controle-urssaf/" target="_blank">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
@@ -318,10 +368,10 @@
               ayming.fr</a>
           </div>
         </article>
-        <article class="card" style="animation-delay: 770ms">
+        <article class="card" style="animation-delay: 1050ms">
           
-          <h3>Aides à l&#x27;apprentissage</h3>
-          <p>Récupération de toutes les aides à l&#x27;alternance et suivi des paiements ASP, sans charge pour vos équipes.</p>
+          <h3>Obtenir les aides à l&#x27;apprentissage</h3>
+          <p>Bénéficier du plein potentiel des aides et d&#x27;un reporting consolidé.</p>
           <div class="card-links">
             <a class="link-deck" href="https://ayming-france.github.io/aides-apprentissage/" target="_blank">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
@@ -343,7 +393,7 @@
         <span class="rule"></span>
       </header>
       <div class="grid">
-        <article class="card" style="animation-delay: 840ms">
+        <article class="card" style="animation-delay: 1120ms">
           <span class="badge">Outils</span>
           <h3>Écosystème digital Ayming</h3>
           <p>La suite d&#x27;outils digitaux qui équipe les offres RH : déclaration, prévention, pilotage et analytics.</p>
