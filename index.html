@@ -10,7 +10,7 @@
     :root {
       --blue: #11a9e6; --blue-deep: #0d8fc4; --navy: #00456d;
       --green: #0ab38c; --amber: #e09f1f; --ink: #1d2b3a; --gray: #64748b;
-      --bg: #e8eef5; --card: #ffffff; --line: #e4ebf2;
+      --bg: #f0f4f8; --card: #ffffff; --line: #e4ebf2;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -81,12 +81,7 @@
 
     main { padding: 16px 5vw 80px; max-width: 1480px; margin: 0 auto; }
 
-    .family {
-      margin-top: 34px; background: #fff;
-      border: 1px solid var(--line); border-radius: 24px;
-      padding: 26px 28px 28px;
-      box-shadow: 0 2px 14px rgba(29,43,58,0.05);
-    }
+    .family { margin-top: 52px; }
     .family.hidden { display: none; }
     .family-head { display: flex; align-items: center; gap: 18px; margin-bottom: 22px; flex-wrap: wrap; }
     .pill {
@@ -173,6 +168,7 @@
     .t-coming h3 { color: var(--gray); }
     .link-soon { font-size: 12.5px; font-weight: 700; color: #9fb2c2; }
 
+    body.settled .card { animation: none; }
     .empty {
       display: none; text-align: center; padding: 80px 0; color: var(--gray);
     }
@@ -209,9 +205,16 @@
     </div>
   </header>
 
-  <nav class="filters"><button class="chip active" data-filter="all">Tout</button><button class="chip" data-filter="offre">Offres</button><button class="chip" data-filter="famille">Familles</button><button class="chip" data-filter="outils">Outils</button><button class="chip" data-filter="interne">Internes</button><button class="chip" data-filter="coming">À venir</button><button class="chip" data-filter="fav">★ Favoris</button></nav>
+  <nav class="filters"><button class="chip active" data-filter="all">Tout</button><button class="chip" data-filter="offre">Offres</button><button class="chip" data-filter="famille">Familles</button><button class="chip" data-filter="interne">Internes</button><button class="chip" data-filter="coming">À venir</button><button class="chip" data-filter="fav">★ Favoris</button></nav>
 
   <main>
+    <section class="family hidden" id="fav-section">
+      <header class="family-head">
+        <span class="pill">★ Mes favoris</span>
+        <p class="mission">Vos présentations épinglées, toutes familles confondues.</p>
+      </header>
+      <div class="grid" id="fav-grid"></div>
+    </section>
     <section class="family">
       <header class="family-head">
         <span class="pill">Gestion des risques et santé au travail</span>
@@ -480,6 +483,10 @@
     var sections = Array.prototype.slice.call(document.querySelectorAll('.family'));
     var chips = Array.prototype.slice.call(document.querySelectorAll('.chip'));
     var empty = document.getElementById('empty');
+    var favSection = document.getElementById('fav-section');
+    var favGrid = document.getElementById('fav-grid');
+    cards.forEach(function (c) { c._home = c.parentElement; });
+    setTimeout(function () { document.body.classList.add('settled'); }, 1400);
     var FAV_KEY = 'ayming-hub-favs';
     var activeFilter = 'all';
 
@@ -505,10 +512,23 @@
         c.classList.toggle('hidden', !show);
         if (show) visible++;
       });
+      if (activeFilter === 'fav') {
+        cards.forEach(function (c) {
+          if (!c.classList.contains('hidden')) favGrid.appendChild(c);
+          else if (c.parentElement === favGrid) c._home.appendChild(c);
+        });
+      } else {
+        cards.forEach(function (c) {
+          if (c.parentElement === favGrid) c._home.appendChild(c);
+        });
+      }
       sections.forEach(function (s) {
+        if (s === favSection) return;
         var any = s.querySelectorAll('.card:not(.hidden)').length > 0;
         s.classList.toggle('hidden', !any);
       });
+      favSection.classList.toggle('hidden',
+        activeFilter !== 'fav' || favGrid.children.length === 0);
       empty.classList.toggle('show', visible === 0);
     }
 
