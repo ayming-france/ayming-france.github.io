@@ -186,6 +186,21 @@
       .pill { white-space: normal; }
     }
   </style>
+  <!-- Umami analytics: track hub access, tagged by audience role (rep vs client) -->
+  <script defer src="https://umami-analytics-three-fawn.vercel.app/script.js" data-website-id="b3424f11-6037-4c00-a72e-97dfdd6377a5"></script>
+  <script>
+    window.addEventListener('load', function () {
+      try {
+        var stored = localStorage.getItem('ay-role');
+        var role = (stored === 'rep' || stored === 'client') ? stored : (/[?&]pm=/.test(location.search) ? 'client' : 'rep');
+        if (stored !== 'rep' && stored !== 'client') localStorage.setItem('ay-role', role);
+        (function fire() {
+          if (window.umami && window.umami.track) window.umami.track('hub_view', { role: role });
+          else setTimeout(fire, 300);
+        })();
+      } catch (e) {}
+    });
+  </script>
 </head>
 <body>
 
