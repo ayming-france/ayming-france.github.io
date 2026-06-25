@@ -187,9 +187,8 @@
     }
   </style>
   <!-- Umami analytics: track hub access, tagged by audience role (rep vs client) -->
-  <script defer src="https://umami-analytics-three-fawn.vercel.app/script.js" data-website-id="b3424f11-6037-4c00-a72e-97dfdd6377a5"></script>
   <script>
-    window.addEventListener('load', function () {
+    (function () {
       try {
         var stored = localStorage.getItem('ay-role');
         var role = (stored === 'rep' || stored === 'client') ? stored : (/[?&]pm=/.test(location.search) ? 'client' : 'rep');
@@ -197,14 +196,22 @@
         var toM = location.search.match(/[?&]to=([^&]+)/);
         var recipient = toM ? decodeURIComponent(toM[1]) : (sessionStorage.getItem('ay-to') || '');
         if (toM) sessionStorage.setItem('ay-to', recipient);
-        (function fire() {
-          if (window.umami && window.umami.track) {
-            if (recipient && window.umami.identify) { try { window.umami.identify(recipient, { role: role }); } catch (e) {} }
-            window.umami.track('hub_view', recipient ? { role: role, recipient: recipient } : { role: role });
-          } else setTimeout(fire, 300);
-        })();
+        var s = document.createElement('script');
+        s.defer = true;
+        s.src = 'https://umami-analytics-three-fawn.vercel.app/script.js';
+        s.setAttribute('data-website-id', 'b3424f11-6037-4c00-a72e-97dfdd6377a5');
+        s.setAttribute('data-tag', role);
+        document.head.appendChild(s);
+        window.addEventListener('load', function () {
+          (function fire() {
+            if (window.umami && window.umami.track) {
+              if (recipient && window.umami.identify) { try { window.umami.identify(recipient, { role: role }); } catch (e) {} }
+              window.umami.track('hub_view', recipient ? { role: role, recipient: recipient } : { role: role });
+            } else setTimeout(fire, 300);
+          })();
+        });
       } catch (e) {}
-    });
+    })();
   </script>
 </head>
 <body>
