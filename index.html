@@ -193,6 +193,9 @@
         var stored = localStorage.getItem('ay-role');
         var role = (stored === 'rep' || stored === 'client') ? stored : (/[?&]pm=/.test(location.search) ? 'client' : 'rep');
         if (stored !== 'rep' && stored !== 'client') localStorage.setItem('ay-role', role);
+        var toM = location.search.match(/[?&]to=([^&]+)/);
+        var recipient = toM ? decodeURIComponent(toM[1]) : (sessionStorage.getItem('ay-to') || '');
+        if (toM) sessionStorage.setItem('ay-to', recipient);
         var s = document.createElement('script');
         s.defer = true;
         s.src = 'https://umami-analytics-three-fawn.vercel.app/script.js';
@@ -209,7 +212,8 @@
           (function go() {
             if (window.umami && window.umami.track) {
               window.umami.track();
-              window.umami.track('hub_view', { role: role });
+              if (recipient && window.umami.identify) { try { window.umami.identify(recipient, { role: role }); } catch (e) {} }
+              window.umami.track('hub_view', recipient ? { role: role, recipient: recipient } : { role: role });
             } else setTimeout(go, 200);
           })();
         }
