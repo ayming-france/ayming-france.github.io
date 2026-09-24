@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Offres RH Ayming : présentations commerciales</title>
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -45,6 +45,40 @@
       font: 700 11px 'Lato', sans-serif; color: var(--gray);
       border: 1px solid var(--line); border-radius: 6px; padding: 2px 7px; background: #fff;
     }
+    .brochure { position: relative; flex-shrink: 0; }
+    .brochure-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--navy); color: #fff; text-decoration: none;
+      font-size: 13.5px; font-weight: 700; border-radius: 99px; padding: 9px 18px;
+      white-space: nowrap; transition: background 0.16s ease, box-shadow 0.16s ease;
+    }
+    .brochure-btn:hover { background: var(--blue-deep); box-shadow: 0 6px 18px rgba(0,69,109,0.22); }
+    .brochure-btn svg { width: 16px; height: 16px; flex-shrink: 0; }
+    .brochure-tip {
+      position: absolute; top: calc(100% + 12px); right: 0; width: 260px;
+      display: flex; flex-wrap: wrap; align-items: flex-start; gap: 6px 10px;
+      background: #fff; border: 1px solid var(--line); border-radius: 14px;
+      padding: 12px 34px 12px 14px; box-shadow: 0 12px 32px rgba(29,43,58,0.16);
+      font-size: 13.5px; line-height: 1.4; color: var(--ink); text-align: left;
+      animation: tipIn 0.35s ease both;
+    }
+    .brochure-tip[hidden] { display: none; }
+    .brochure-tip::before {
+      content: ''; position: absolute; top: -7px; right: 36px; width: 12px; height: 12px;
+      background: #fff; border-left: 1px solid var(--line); border-top: 1px solid var(--line);
+      transform: rotate(45deg);
+    }
+    .brochure-new {
+      background: var(--green); color: #fff; font-size: 10.5px; font-weight: 900;
+      letter-spacing: 0.12em; text-transform: uppercase; border-radius: 99px; padding: 3px 9px;
+    }
+    .brochure-text { flex-basis: 100%; }
+    .brochure-close {
+      position: absolute; top: 6px; right: 8px; border: 0; background: transparent;
+      color: var(--gray); font-size: 20px; line-height: 1; padding: 2px 6px;
+    }
+    .brochure-close:hover { color: var(--ink); }
+    @keyframes tipIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
     .top .unit { font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gray); white-space: nowrap; }
 
     /* ===== Hero ===== */
@@ -181,6 +215,9 @@
     @media (max-width: 720px) {
       .top { flex-wrap: wrap; gap: 10px; }
       .top .unit { display: none; }
+      .brochure { margin-left: auto; }
+      .brochure-btn { padding: 8px 14px; font-size: 12.5px; }
+      .brochure-tip { width: min(260px, calc(100vw - 32px)); }
       .search { order: 3; max-width: none; width: 100%; }
       .family-head { flex-direction: column; align-items: flex-start; gap: 10px; }
       .pill { white-space: normal; }
@@ -235,7 +272,14 @@
       <input id="q" type="search" placeholder="Rechercher une offre, un mot-clé..." autocomplete="off">
       <kbd>/</kbd>
     </label>
-    <span class="unit">Business unit RH</span>
+    <div class="brochure" data-version="2026-09">
+      <a class="brochure-btn" href="https://go.ayming.com/offres-performance-rh" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/></svg><span>Brochure Performance RH</span></a>
+      <div class="brochure-tip" role="status" hidden>
+        <span class="brochure-new">Nouveau</span>
+        <span class="brochure-text">Nouvelle version de la brochure, à partager avec vos clients</span>
+        <button class="brochure-close" type="button" aria-label="Fermer">&times;</button>
+      </div>
+    </div>
   </div>
 
   <header class="hero">
@@ -666,6 +710,23 @@
     });
     paintStars();
   })();
+  </script>
+  <script>
+    (function () {
+      var box = document.querySelector('.brochure');
+      if (!box) return;
+      var tip = box.querySelector('.brochure-tip');
+      var key = 'ay-brochure-seen-' + box.getAttribute('data-version');
+      function seen() { try { localStorage.setItem(key, '1'); } catch (e) {} tip.hidden = true; }
+      var already = false;
+      try { already = localStorage.getItem(key) === '1'; } catch (e) {}
+      if (!already) tip.hidden = false;
+      box.querySelector('.brochure-close').addEventListener('click', seen);
+      box.querySelector('.brochure-btn').addEventListener('click', function () {
+        seen();
+        try { if (window.umami && window.umami.track) window.umami.track('brochure_open'); } catch (e) {}
+      });
+    })();
   </script>
 
 </body>
