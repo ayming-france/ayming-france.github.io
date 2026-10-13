@@ -1,0 +1,6 @@
+# Deck exports (deck.pdf, deck.pptx) cannot carry a noindex tag, so crawlers stay out of them.
+# HTML pages stay crawlable on purpose: they carry <meta name="robots" content="noindex">,
+# which a crawler only honours if it may fetch the page.
+User-agent: *
+Disallow: /*.pdf$
+Disallow: /*.pptx$
